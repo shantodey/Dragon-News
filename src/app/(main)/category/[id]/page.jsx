@@ -1,18 +1,11 @@
 import LeftSideBar from "@/Component/homepage/news/LeftSideBar";
 import RightSideBar from "@/Component/homepage/news/RigthSideBar";
+import { gateCategories, getNewsByCategoriesID } from "@/lib/data";
 import Image from "next/image";
 import { FaRegBookmark, FaShareAlt, FaEye, FaStar, } from "react-icons/fa";
 
-async function gateCategories() {
-    const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
-    const data = await res.json();
-    return data.data;
-}
-async function getNewsByCategoriesID(categoriesID) {
-    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoriesID}`);
-    const data = await res.json();
-    return data.data;
-}
+
+
 const NewsCatagory = async ({ params }) => {
     const { id } = await params;
     const categories = await gateCategories();
