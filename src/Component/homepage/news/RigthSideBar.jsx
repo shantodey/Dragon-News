@@ -49,7 +49,7 @@ const RightSideBar = () => {
                 <h2 className="text-xl font-semibold mb-4">Q-Zone</h2>
                 <div className="space-y-5">
                     <div className="p-3 rounded-md">
-                        <Image src={swimmingImg} alt="Swimming" mclassName="w-full rounded-md" />
+                        <Image src={swimmingImg} alt="Swimming" className="w-full rounded-md" />
 
                     </div>
 
