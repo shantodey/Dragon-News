@@ -1,10 +1,28 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import { useForm } from "react-hook-form";
 
-const RegisterPage = () => {
-    const {register,handleSubmit,formState: { errors }}=useForm()
-    const handelLoginFunc = (data) => {
-        console.log(data);
+const RegisterPage =  () => {
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    const handelLoginFunc = async (data) => {
+        const { email, name, photo, password } = data;
+
+     const { data:res, error } = await authClient.signUp.email({
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            image: photo,
+            // callbackURL: "/",
+        });
+        console.log(res, error);
+        if(error){
+            alert(error.message)
+        }
+        if(res){
+            alert(res.message)
+        }
+       
+        
     }
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -19,12 +37,12 @@ const RegisterPage = () => {
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
                                 <input
-                                    type="text"
-                                    {...register("text", { required: " Name field is required" })}
+                                    type="name"
+                                    {...register("name", { required: " Name field is required" })}
                                     placeholder="Enter your name"
                                     className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition"
                                 />
-                                {errors.text && <p className="text-red-500">{errors.text.message}</p>}
+                                {errors.name && <p className="text-red-500">{errors.name.message}</p>}
                             </div>
 
                             <div>
