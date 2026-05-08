@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🐉 Dragon News
 
-## Getting Started
+A high-performance, modern news portal built with **Next.js 15**, **React 19**, and **Tailwind CSS**. **Dragon News** delivers a seamless experience for browsing global headlines and categorized news with a focus on speed, SEO, and minimalist design.
 
-First, run the development server:
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://dragon-news-adil.vercel.app/)
+[![Tech Stack](https://img.shields.io/badge/Stack-MERN%20/%20Next.js-blue?style=for-the-badge)](https://github.com/SyntaxAdil/dragon-news)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- **Dynamic Routing:** Leveraging Next.js App Router for blazing-fast navigation.
+- **SEO Optimized:** Dynamic metadata generation for every news article.
+- **Modern UI/UX:** Clean, minimalist interface using **Tailwind CSS** and **DaisyUI**.
+- **Category-based Filtering:** Easily browse news by technology, sports, politics, etc.
+- **Responsive Design:** Fully optimized for Mobile, Tablet, and Desktop views.
+- **Skeleton Loading:** Smooth user experience during data fetching with custom blur placeholders.
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js 16+](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/)
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+- **Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## 🛠️ Installation & Setup
+
+Follow these steps to run the project locally:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/SyntaxAdil/dragon-news.git](https://github.com/SyntaxAdil/dragon-news.git)
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd dragon-news
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+5.  **Open in your browser:**
+    Visit `http://localhost:3000` to see the app.
+
+---
+
+## 📂 Project Structure
+
+```text
+├── public/          # Static assets (favicons, logos)
+├── src/
+│   ├── app/         # App Router (Pages, Layouts, API Routes)
+│   ├── components/  # Reusable UI Components
+│   ├── lib/         # API fetching and helper functions
+│   └── styles/      # Global CSS and Tailwind config
+└── tailwind.config.js
+```
+````
+
+---
+
+## 📝 Key Implementation
+
+On the news details page, I implemented **Dynamic Metadata** to ensure each article is SEO-friendly:
+
+```javascript
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const news = await getNewsDeatiles(id);
+  return {
+    title: `${news[0]?.title} | Dragon News`,
+    description: news[0]?.details.slice(0, 150),
+  };
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🤝 Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/SyntaxAdil/dragon-news/issues).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 👤 Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Abdur Rahman (Adil)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- GitHub: [@SyntaxAdil](https://github.com/SyntaxAdil)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
