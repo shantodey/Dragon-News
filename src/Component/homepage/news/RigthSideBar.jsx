@@ -1,4 +1,4 @@
-
+'use client'
 import Image from "next/image";
 import { FaGoogle, FaGithub, FaFacebookF, FaTwitter, } from "react-icons/fa";
 
@@ -6,8 +6,14 @@ import { FiInstagram } from "react-icons/fi";
 import swimmingImg from "@/assets/swimming.png";
 import classImg from "@/assets/class.png";
 import playgroundImg from "@/assets/playground.png";
+import { authClient } from "@/lib/auth-client";
 
 const RightSideBar = () => {
+    const handelGoogleSingIN = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });   
+    }
     return (
         <div className="space-y-8">
             <div>
@@ -15,7 +21,7 @@ const RightSideBar = () => {
                 <h2 className="text-xl font-semibold mb-4">Login With</h2>
 
                 <div className="flex flex-col gap-3">
-                    <button className="btn bg-white border border-blue-300 text-blue-400 hover:bg-blue-50 shadow-none">
+                    <button onClick={handelGoogleSingIN} className="btn bg-white border border-blue-300 text-blue-400 hover:bg-blue-50 shadow-none">
                         <FaGoogle /> Login with Google
                     </button>
                     <button className="btn bg-white border border-gray-300 text-black hover:bg-gray-100 shadow-none">
