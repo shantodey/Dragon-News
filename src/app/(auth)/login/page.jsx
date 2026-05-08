@@ -1,5 +1,6 @@
 'use client'
 import { authClient } from "@/lib/auth-client";
+import { router } from "better-auth/api";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 const Loginpage = () => {
@@ -11,7 +12,7 @@ const Loginpage = () => {
             email: email, // required
             password: password, // required
             rememberMe: true,
-            // callbackURL: "/",
+            callbackURL: "/",
         });
         console.log(res, error);
         if (error) {
@@ -20,6 +21,7 @@ const Loginpage = () => {
         }
         if (res && res.token) {
             alert("You have successfully logged in!");
+            // router.push("/");
         }
 
     }
