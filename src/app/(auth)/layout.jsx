@@ -5,6 +5,7 @@ const AuthLayout = ({children}) => {
     return (
         <>
             <Navber></Navber>
+            {children}
         </>
     );
 };

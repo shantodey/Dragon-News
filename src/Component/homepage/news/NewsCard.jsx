@@ -6,13 +6,12 @@ const NewsCard = ({ newsByCategories }) => {
     return (
         <>
             {newsByCategories.length > 0 ? newsByCategories.map(n => {
-
                 return (
                     <div key={n._id} className="bg-white border border-gray-200 rounded-md overflow-hidden mb-6">
                         <div className="flex items-center justify-between bg-gray-100 px-4 py-3">
 
                             <div className="flex items-center gap-3">
-                                <Image src={n.author.img} alt={n.author.name} width={40} height={40} className="rounded-full object-cover" />
+                                <Image src={n.author.img} alt={n.author.name|| "Author avatar"} width={40} height={40} className="rounded-full object-cover" />
                                 <div>
                                     <h2 className="font-semibold text-sm text-gray-800">{n.author.name}</h2>
                                     <p className="text-xs text-gray-500">{n.author.published_date}</p>
@@ -30,7 +29,7 @@ const NewsCard = ({ newsByCategories }) => {
                         </div>
 
                         <div className="px-5">
-                            <Image src={n.image_url} alt={n.title} width={800} height={500} className="w-full rounded-md object-cover" />
+                            <Image src={n.image_url} alt={n.title|| "Author avatar"} width={800} height={500} className="w-full rounded-md object-cover" />
                         </div>
 
                         <div className="p-5">
